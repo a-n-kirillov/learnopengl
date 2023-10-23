@@ -52,10 +52,20 @@ int main()
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+//    float vertices[] = {
+//            -0.5f, -0.5f, 0.0f,
+//            0.5f, -0.5f, 0.0f,
+//            0.0f,  0.5f, 0.0f
+//    };
+
     float vertices[] = {
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            0.0f,  0.5f, 0.0f
+            -1.0f, -1.0f, 0.0f,
+            -0.5f, -1.0f, 0.0f,
+            -0.75f, 1.0f, 0.0f,
+            0.5f, -1.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,
+            0.75f, 1.0f, 0.0f
+
     };
 
     unsigned int VBO;
@@ -129,13 +139,14 @@ int main()
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
+
     while (!glfwWindowShouldClose(window))
     {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
         processInput(window);
         glfwPollEvents();
         glfwSwapBuffers(window);
